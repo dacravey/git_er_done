@@ -1,20 +1,21 @@
-require("sinatra")
+equire("sinatra")
 require("sinatra/reloader")
 also_reload("lib/**/*.rb")
 require("./lib/task")
+require("./lib/list")
 require("pg")
-require("pry")
 
 DB = PG.connect({:dbname => "git_er_done"})
 
 get("/") do
-  @tasks = Task.all()
+  @lists = List.all()
   erb(:index)
 end
 
-post("/tasks") do
-  description = params.fetch("description")
-  task = Task.new(description)
-  task.save()
-  erb(:success)
+post("/lists") do
+  name = params.fetch("name")
+  list = List.new({:name => name, :id => nil})
+  list.save()
+  @lists = List.all()
+  erb(:index)
 end
