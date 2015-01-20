@@ -2,7 +2,6 @@ require('rspec')
 require('pg')
 require('list')
 
-describe(List) do
 
 DB = PG.connect({:dbname => 'git_er_done_test'})
 
@@ -12,6 +11,7 @@ RSpec.configure do |config|
   end
 end
 
+describe(List) do
   describe(".all") do
     it("starts off with no lists") do
       expect(List.all()).to eq([])
