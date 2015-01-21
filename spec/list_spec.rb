@@ -46,18 +46,18 @@ describe(List) do
     it("returns an array of tasks for that list") do
       test_list = List.new({:name => "Epicodus", :id => nil})
       test_list.save()
-      test_task = Task.new({:description => "learn SQL", :list_id => test_list.id()})
+      test_task = Task.new({:description => "learn SQL", :list_id => test_list.id(), :due_date => '2015-01-24'})
       test_task.save()
-      test_task2 = Task.new({:description => "Review Ruby", :list_id => test_list.id()})
-      test_task2.save()
+      test_task2 = Task.new({:description => "Review Ruby", :list_id => test_list.id(), :due_date => '2015-01-24'})
+      test_task2.save()  
       expect(test_list.tasks()).to eq([test_task, test_task2])
     end
   end
 
   describe("#==") do
     it("is the same task if it has the same description and list ID") do
-      task1 = Task.new({:description => "learn SQL", :list_id => 1})
-      task2 = Task.new({:description => "learn SQL", :list_id => 1})
+      task1 = Task.new({:description => "learn SQL", :list_id => 1, :due_date => '2015-01-24'})
+      task2 = Task.new({:description => "learn SQL", :list_id => 1, :due_date => '2015-01-24'})
       expect(task1).to(eq(task2))
     end
   end

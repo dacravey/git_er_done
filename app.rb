@@ -4,6 +4,7 @@ also_reload("lib/**/*.rb")
 require("./lib/task")
 require("./lib/list")
 require("pg")
+require("pry")
 
 DB = PG.connect({:dbname => "git_er_done"})
 
